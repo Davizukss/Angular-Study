@@ -1,0 +1,44 @@
+<div id="page-monitor-list" class="container">
+
+  <app-header [title]="'Estes são os monitores disponíveis.'">
+
+    <form id="search-monitores">
+
+      <app-select [name]="'subject'"
+                  [label]="'Matéria'"
+                  [options]="disciplinas"  />
+
+
+      <app-select [name]="'week_day'"
+                             [label]="'Dias da semana'"
+                             [options]="[ { value: 'SEGUNDA', label: 'Segunda-feira' },
+                                          { value: 'TERCA', label: 'Terça-feira' },
+                                          { value: 'QUARTA', label: 'Quarta-feira' },
+                                          { value: 'QUINTA', label: 'Quinta-feira' },
+                                          { value: 'SEXTA', label: 'Sexta-feira' }
+                                        ]" />
+
+      <app-input [name]="'time'" [label]="'Hora'" type="time" />
+
+      <button type="submit">
+          Buscar
+      </button>
+
+    </form>
+
+  </app-header>
+
+  <main>
+    <div *ngIf="monitores?.length == 0; else temMonitores">
+      <h1>Realize uma pesquisa...</h1>
+    </div>
+
+    <ng-template #temMonitores>
+      <div *ngFor="let item of monitores, let indice = index">
+        <app-monitor [data]="item"></app-monitor>
+      </div>
+    </ng-template>
+
+  </main>
+
+</div>

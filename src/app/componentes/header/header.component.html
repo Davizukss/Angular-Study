@@ -1,0 +1,20 @@
+<header class="page-header">
+
+  <div class="top-bar-container">
+
+    <a routerLink="/">
+      <img src="/assets/imagens/icons/back.svg" alt="Voltar" />
+    </a>
+
+    <img src="/assets/imagens/logo.svg" alt="e-study" />
+  </div>
+
+  <div class="header-content">
+    <strong>{{ title }}</strong>
+    <p *ngIf="description">{{ description }}</p>
+
+    <ng-content></ng-content>
+
+  </div>
+
+</header>

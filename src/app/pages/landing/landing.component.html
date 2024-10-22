@@ -1,0 +1,32 @@
+<div id="page-landing">
+  <div id="page-landing-content" class="container">
+      <div class="logo-container">
+          <img src="/assets/imagens/logo.svg" alt="Thutor" />
+          <h2>Sua plataforma de suporte aos estudos.</h2>
+      </div>
+
+      <img src="/assets/imagens/landing.svg" alt="Plataforma de estudos" class="hero-image" />
+
+      <div class="buttons-container">
+          <a class="study" routerLink="estudar">
+              <img src="/assets/imagens/icons/study.svg" alt="Estudar" />
+              Estudar
+          </a>
+
+          <a class="give-classes" routerLink="inscrever">
+              <img src="/assets/imagens/icons/give-classes.svg" alt="Inscrever" />
+              Ajudar
+          </a>
+
+      </div>
+
+      <span class="total-connections">
+        <div *ngIf="conexoes < 2; else muitasConexoes">
+          Total de {{conexoes}} conexão realizada <img src="../assets/imagens/icons/purple-heart.svg" />
+        </div>
+        <ng-template #muitasConexoes>
+          Total de {{conexoes}} conexões realizadas <img src="../assets/imagens/icons/purple-heart.svg" />
+        </ng-template>
+      </span>
+  </div>
+</div>

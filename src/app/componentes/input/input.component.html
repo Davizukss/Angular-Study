@@ -1,0 +1,4 @@
+<div class="input-block">
+  <label [htmlFor]="name">{{label}}</label>
+  <input [attr.type]="type" [id]="name" [value]="value" (input)="onInput($event)"/>
+</div>

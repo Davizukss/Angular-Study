@@ -1,0 +1,70 @@
+<div id="page-monitor-form" className="container">
+
+    <app-header [title]="'Que legal que deseja ajudar.'" [description]="'Preencha o nosso formulário de inscrição'" />
+    <main>
+        <form [formGroup]="monitorForm" (ngSubmit)="onSalvar()">
+            <fieldset>
+                <legend>Seus Dados</legend>
+                <app-input [name]="'name'" [label]="'Nome completo'" formControlName="nome" />
+
+                <app-input [name]="'avatar'" [label]="'Avatar'" formControlName="foto" />
+
+                <app-input [name]="'email'" [label]="'E-Mail'" formControlName="email" />
+
+                <app-input [name]="'whatsapp'" [label]="'WhatsApp'" formControlName="whatsApp" />
+
+
+            </fieldset>
+
+            <fieldset>
+                <legend>Sobre a aula</legend>
+
+                <ng-container formGroupName="disciplina">
+                    <app-select [name]="'subject'" [label]="'Matéria'" [options]="disciplinas" formControlName="id" />
+                </ng-container>
+                <app-textarea [name]="'conteudo'" [label]="'Conteúdo'" formControlName="conteudo" />
+            </fieldset>
+            
+            <fieldset>
+                <legend>
+                    Horários disponíveis
+                    <button type="button" (click)="addDisponibilidade()">
+                        + Novo horário
+                    </button>
+                </legend>
+
+                <ng-container formArrayName="disponibilidade">
+
+                    <div *ngFor="let item of disponibilidade.controls, let indice = index">
+                        <div class="schedule-item" [formGroupName]="indice">
+
+                            <app-select [name]="'week_day'" [label]="'Dias da semana'" formControlName="diaSemana"
+                                [options]="[ { value: 'SEGUNDA', label: 'Segunda-feira' },
+                                                      { value: 'TERCA', label: 'Terça-feira' },
+                                                      { value: 'QUARTA', label: 'Quarta-feira' },
+                                                      { value: 'QUINTA', label: 'Quinta-feira' },
+                                                      { value: 'SEXTA', label: 'Sexta-feira' }
+                                                    ]" />
+
+                            <app-input [name]="'from'" [label]="'Das'" type="time" formControlName="das" />
+
+                            <app-input [name]="'to'" [label]="'Até'" type="time" formControlName="ate" />
+                        </div>
+                    </div>
+                </ng-container>
+            </fieldset>
+
+            <footer>
+                <p>
+                    <img src="./assets/imagens/icons/warning.svg" alt="Aviso importante" />
+                    Importante! <br />
+                    Preencha todos os dados
+                </p>
+                <button type="submit">
+                    Salvar cadastro
+                </button>
+            </footer>
+
+        </form>
+    </main>
+</div>

@@ -1,0 +1,22 @@
+<article class="monitor-item">
+    <header>
+      <img [src]="data.foto" [alt]="data.nome" />
+      <div>
+        <strong>{{data.nome}}</strong>
+        <span>{{data.disciplina.nome}}</span>
+      </div>
+    </header>
+
+    <p>{{data.biografia}}</p>
+
+    <footer>
+      <p>
+        E-Mail
+        <strong>{{data.email}}</strong>
+      </p>
+      <a target="_blank" (click)="onConectar(data)">
+        <img [src]="whatsappIcon" alt="Whatsapp"/>
+        Entrar em contato
+      </a>
+    </footer>
+  </article>
